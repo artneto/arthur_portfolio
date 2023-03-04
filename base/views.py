@@ -4,9 +4,9 @@ from .models import (
         UserProfile,
         Blog,
         Portfolio,
-        Testimonial,
+        Testimonials,
         Certificate
-)
+    )
 
 
 from django.views import generic
@@ -41,5 +41,34 @@ class ContactView(generic.FormView):
         form.save()
         messages.sucess(self.request, 'Thank you. We will be in touch soon!')
         return super().form_valid(form)
+
+
+class PortfolioView(generic.ListView):
+    model = Portfolio
+    template_name = 'base/portfolio.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
+
+class PortfolioDetailView(generic.DetailView):
+    model = Portfolio
+    template_name = 'base/portfolio-detail.html'
+
+class BlogView(generic.ListView):
+    model = Blog
+    template_name = 'base/blog.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
+
+class BlogDetailView(generic.Detail.View):
+    model = Blog
+    template_name = 'base/blog-detail.html'
+    
+    
 
         

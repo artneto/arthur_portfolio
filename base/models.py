@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 
 
 class Skill(models.Model):
+
     class Meta:
         verbose_name_plural = 'Skills'
         verbose_name = 'Skill'
@@ -20,22 +21,24 @@ class Skill(models.Model):
     
 
 class UserProfile(models.Model):
+
     class Meta:
-        verbose_name_plural = 'User Profile'
+        verbose_name_plural = 'User Profiles'
         verbose_name = 'User Profile'
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(blank=True, null=True, upload_to='avatar')
     title = models.CharField(max_length=200, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    skills = models.ManyToManyField(skill, blank=True)
-    resume = models.FileField(blank=True, null=True, upload_cv= 'cv')
+    skills = models.ManyToManyField(Skill, blank=True)
+    resume = models.FileField(blank=True, null=True, upload_to= 'cv')
 
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
 
 
 class ContactProfile(models.Model):
+
     class Meta:
         verbose_name_plural = 'Contact Profiles'
         verbose_name = 'Contact Profile'
@@ -51,6 +54,7 @@ class ContactProfile(models.Model):
 
 
 class Testimonials(models.Model):
+
     class Meta:
         verbose_name_plural = 'Testimonials'
         verbose_name = 'Testimonial'
@@ -67,6 +71,7 @@ class Testimonials(models.Model):
 
 
 class Media(models.Model):
+
     class Meta:
         verbose_name_plural = 'Media Files'
         verbose_name = 'Media'
@@ -86,6 +91,7 @@ class Media(models.Model):
 
 
 class Portfolio(models.Model):
+
     class Meta:
         verbose_name_plural = 'Portfolio Files'
         verbose_name = 'Portfolio'
@@ -94,7 +100,7 @@ class Portfolio(models.Model):
     date = models.DateField(blank=True, null=True)
     name = models.CharField(max_length=200, blank=True, null=True)
     description = models.CharField(max_length=500, blank=True, null=True)
-    body = models.RichTextField(blank=True, null=True)
+    body = RichTextField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True, upload_to='portfolio')
     slug = models.SlugField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
@@ -122,7 +128,7 @@ class Blog(models.Model):
     author = models.CharField(max_length=200, blank=True, null=True)
     name = models.CharField(max_length=200, blank=True, null=True)
     description = models.CharField(max_length=500, blank=True, null=True)
-    body = models.RichTextField(blank=True, null=True)
+    body = RichTextField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True, upload_to='portfolio')
     slug = models.SlugField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
@@ -153,4 +159,3 @@ class Certificate(models.Model):
 
     def __str__(self):
         return self.name
-    
