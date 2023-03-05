@@ -3,7 +3,7 @@ from .models import (
     Skill,
     UserProfile,
     ContactProfile,
-    Testimonials,
+    Testimonial,
     Media,
     Portfolio,
     Blog,
@@ -18,7 +18,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('id', 'timestamp', 'name')
 
-@admin.register(Testimonials)
+@admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'is_active')
 

@@ -4,7 +4,7 @@ from .models import (
         UserProfile,
         Blog,
         Portfolio,
-        Testimonials,
+        Testimonial,
         Certificate
     )
 
@@ -13,6 +13,7 @@ from django.views import generic
 
 
 from . forms import ContactForm
+
 
 class IndexView(generic.TemplateView):
     template_name = 'base/index.html'
@@ -35,15 +36,15 @@ class IndexView(generic.TemplateView):
 class ContactView(generic.FormView):
     template_name = 'base/contact.html'
     form_class = ContactForm
-    sucess_url = "/"
+    success_url = "/"
 
     def form_valid(self, form):
         form.save()
-        messages.sucess(self.request, 'Thank you. We will be in touch soon!')
+        messages.success(self.request, 'Thank you. We will be in touch soon!')
         return super().form_valid(form)
 
 
-class PortfolioView(generic.ListView):
+class PortfolioListView(generic.ListView):
     model = Portfolio
     template_name = 'base/portfolio.html'
     paginate_by = 10
@@ -56,7 +57,8 @@ class PortfolioDetailView(generic.DetailView):
     model = Portfolio
     template_name = 'base/portfolio-detail.html'
 
-class BlogView(generic.ListView):
+
+class BlogListView(generic.ListView):
     model = Blog
     template_name = 'base/blog.html'
     paginate_by = 10
@@ -65,10 +67,9 @@ class BlogView(generic.ListView):
         return super().get_queryset().filter(is_active=True)
 
 
-class BlogDetailView(generic.Detail.View):
+class BlogDetailView(generic.DetailView):
     model = Blog
     template_name = 'base/blog-detail.html'
-    
-    
+
 
         

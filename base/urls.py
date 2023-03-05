@@ -1,14 +1,24 @@
 from django.urls import path
 from . import views
 
-app_name ='base'
+app_name = 'base'
 
 urlpatterns = [
-    # path('', views.IndeexView.as_view(), name='home'),
-    # path('contact/', views.ContactView.as_view(), name='contact'),
-    # path('portfolio/', views.PortfolioView.as_view(), name='portfolio'),
-    # path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name='portfolio/blog'),
-    # path('blog/', views.BlogView.as_view(), name='blogs'),
-    # path('blog/<slug:slug>', views.BlogDetailView.as_view(), name='blog'),
-
+    # Homepage
+    path('', views.IndexView.as_view(), name='home'),
+    
+    # Contact page
+    path('contact/', views.ContactView.as_view(), name='contact'),
+    
+    # Portfolio list page
+    path('portfolio/', views.PortfolioListView.as_view(), name='portfolio_list'),
+    
+    # Portfolio detail page
+    path('portfolio/<slug:slug>/', views.PortfolioDetailView.as_view(), name='portfolio_detail'),
+    
+    # Blog list page
+    path('blog/', views.BlogListView.as_view(), name='blog_list'),
+    
+    # Blog detail page
+    path('blog/<slug:slug>/', views.BlogDetailView.as_view(), name='blog_detail'),
 ]

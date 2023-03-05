@@ -53,7 +53,7 @@ class ContactProfile(models.Model):
         return f'{self.name}'
 
 
-class Testimonials(models.Model):
+class Testimonial(models.Model):
 
     class Meta:
         verbose_name_plural = 'Testimonials'

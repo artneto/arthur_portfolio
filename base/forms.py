@@ -10,15 +10,15 @@ class ContactForm(forms.ModelForm):
         }))
     email = forms.EmailField(max_length=254, required=True,
         widget=forms.TextInput(attrs={
-            'placeholder' : '*Full name..',
+            'placeholder' : '*Email..',
         }))
     message = forms.CharField(max_length=1000, required=True,
-        widget=forms.TextInput(attrs={
-            'placeholder' : '*Messsage.',
+        widget=forms.Textarea(attrs={
+            'placeholder' : '*Message..',
             'rows':6,
         }))
 
 
     class Meta:
-        model = 'ContactProfile'
+        model = ContactProfile
         fields = ('name', 'email', 'message',)
