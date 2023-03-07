@@ -44,7 +44,7 @@ class ContactView(generic.FormView):
         return super().form_valid(form)
 
 
-class PortfolioListView(generic.ListView):
+class PortfolioView(generic.ListView):
     model = Portfolio
     template_name = 'base/portfolio.html'
     paginate_by = 10
@@ -58,7 +58,7 @@ class PortfolioDetailView(generic.DetailView):
     template_name = 'base/portfolio-detail.html'
 
 
-class BlogListView(generic.ListView):
+class BlogView(generic.ListView):
     model = Blog
     template_name = 'base/blog.html'
     paginate_by = 10
