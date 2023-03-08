@@ -136,3 +136,6 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-artneto-arthurportfolio-fyv60209aom.ws-eu89b.gitpod.io','https://*.127.0.0.1']
